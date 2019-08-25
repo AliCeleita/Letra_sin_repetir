@@ -8,12 +8,18 @@ package com.ucundinamarca.letras;
 import java.util.Scanner;
 
 /**
- *
+ * Esta clase dice cual es la primera letra sin repetir en una palabra
  * @author Alisson Celeita
+ * @param palabra Es la palabra digitada por el usuario.
+ * @param repetido Es el caracter sin repetir
  */
 public class Palabra {
     private String palabra;
     private char repetido=' ';
+    
+    /**
+     * En el constructor se le pide la palabra al usuario.
+     */
     
     public Palabra(){
         Scanner entrada = new Scanner(System.in);
@@ -22,6 +28,10 @@ public class Palabra {
         palabra=palabra.toLowerCase();
         evaluacion(palabra);
     }
+    /**
+     * Este metodo evalua cada una de las letras de la palabra y dependiendo el caso direcciona a los otros metodos.
+     * @param palabra 
+     */
     
     private void evaluacion(String palabra){
         for(int i=0;i<palabra.length();i++){
@@ -47,9 +57,15 @@ public class Palabra {
         }
     }
     
+    /**
+     * Este metodo realiza la primera validacion para saber si una letra se esta repitiendo
+     * @param rango es el indice para saber que letra es;
+     * @return Retorna la letra que no se este repitiendo
+     * El caracter - es para indicar que las letras se repiten
+     */
+    
     private char sinRepetir(int rango){
         int contador=0;
-        char aux=' ';
         for(int i=0; i<rango;i++){
             if(palabra.charAt(i)!=repetido){
                 contador=0;
@@ -65,7 +81,12 @@ public class Palabra {
         }
         return'-';
     }
-    
+    /**
+     * Este metodo realiza la segunda validacion para saber que letra no se esta repitiendo
+     * @param rango es el indice para saber que letra es;
+     * @return Retorna la letra que no se este repitiendo
+     * El caracter - es para indicar que las letras se repiten
+     */
     private char validacion(int rango){
         int contador=0;
         for(int i=0; i<rango;i++){
@@ -78,6 +99,11 @@ public class Palabra {
         }
         return '-';
     }
+    
+    /**
+     * Este metodo imprime la letra que no se este repitiendo
+     * @param letra recibe la letra que no se esta repitiendo
+     */
     
     private void impresion(char letra){
         System.out.println("Primera letra sin repetir => "+letra);
